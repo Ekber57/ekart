@@ -17,7 +17,7 @@ def login(request):
                      request.session['user_login']=login
                      return redirect('/office')
                  else:
-                     return render(request,'login.html',{'alert':'Məlümatlar yanlışdır! Şifrə düzgün deyil!'})
+                     return render(request,'login.html',{'alert':'Məlümatlar yanlışdır! Şifrə düzgün deyil! git test olunur'})
                                     
                                     
                      
