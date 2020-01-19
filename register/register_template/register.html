@@ -1,0 +1,51 @@
+<!--{% load static %}-->
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+
+
+
+
+</head>
+<body>
+<div style='text-align:left' class="head" >EKART.NET</div>
+<center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+<div class="content" >
+{% if alert %}
+
+<div id="fail">{{alert}}! </div>
+{% endif %}
+{% if not alert %}
+<div id="success">Məlümatları düzgün daxil edin. Əks halda hesabınız doğrulanmayacaq! </div>
+{% endif %}
+<form action="/registiration" method="POST" >
+{% csrf_token %}
+<input class="input" name="ad" placeholder="ad" >
+<br>
+<input class="input" name="soyad" placeholder="soyad" >
+<br>
+
+<input type="text" class="input" name="login" placeholder="login" >
+<br>
+<input type="text" class="input" name="mail" placeholder="mail ünvanı" >
+<br>
+<input type="number" class="input" name="nomre" placeholder="əlaqə nömrəsi" >
+<br>
+<input type="password" class="input" name="sifre" placeholder="şifrə" >
+<br>
+
+<button class="button">qeydiyyat</button>
+</form>
+</div>
+
+<div class="foot" >virtual money 2000</div>
+</body>
+</html>

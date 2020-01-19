@@ -1,0 +1,70 @@
+
+
+
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en"><head>
+{% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+
+
+
+</head>
+<body>
+<div class="head" >cards</div><center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+<div class="content" >
+{% if balans %}
+<div id="fail">
+<span style="font-size:17px" >
+Balansım: {{balans}} ₼
+</span>
+</div>
+{% endif %}
+
+<div style="text-align:left" id="success">
+
+KS -- kartın seria nömrəsi
+<br>
+KK -- kartın kodu
+</div>
+
+{% if alert %}
+<div {% if success %} id="success" {% endif %} {% if not success %} id="fail" {% endif %} >
+{{alert}}
+</div>
+{% endif %}
+
+
+
+
+<form action='/tranzaksiya' method='POST'>
+{% csrf_token %}
+<input type="number" class="input" name="ks" placeholder="KS kodu daxil edin" >
+<br>
+<input type="text" class="input" name="kk" placeholder="KK daxil edin" >
+<br>
+
+
+{% if not CK %}
+<input type="text" class="input" name="ck" placeholder="CK daxil edin" >
+<br>
+{% endif%}
+
+
+
+<button class="button">cuzdana elave et</button>
+</form>
+</div>
+<div class="foot" >virtual money 2000
+<span style="align:left" >
+</span>
+</div>
+</body>
+</html>

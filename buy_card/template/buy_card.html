@@ -1,0 +1,74 @@
+
+<!--{% load static %}-->
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+<link rel="stylesheet" href="../static/css/Ekber.css">
+
+
+
+</head>
+<body>
+<div style='text-align:left' class="head" >EKART.NET
+{% if sesya %}
+<span style='float:right'>
+<a href="/logout" >Hesabdan çıx</a>
+</span>
+{% endif %}
+
+
+</div>
+<center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+<div class="content">
+
+{% if CK %}
+<div id="success" style="text-align:left" >
+
+<div style="margin:-9px" id="fail">
+<span style="font-size:17px" >
+CK {{CK}}
+</span>
+</div>
+</div>
+{% endif %}
+{% if balans %}
+<div style="text-align:left" id="success">
+Balansım: {{balans}} ₼
+</div>
+{% endif %}
+{% if not sesya %}
+<div id='success'>Məlümatları düzgün daxil edin</div>
+
+{% endif %}
+{% if alert %}
+<div id='fail'>{{alert}}</div>
+
+{% endif %}
+<form action='/buy_card/transfer' method="POST">
+{% csrf_token %}
+<input type="text" class="input" name="amount" placeholder="kartın məbləği min 0.2 ₼" >
+<br>
+{% if not sesya %}
+<input type="number" class="input" name="ck" placeholder="cüzdan kodu" >
+<br>
+<input type="text" class="input" name="sifre" placeholder="cüzdan şifrəsi">
+<br>
+
+{% endif %}
+<button class="button">virtual kart al</button>
+</form>
+</div>
+<div class="foot" >virtual money 2000
+<span style="align:left" >
+</span>
+</div>
+</body>
+</html>

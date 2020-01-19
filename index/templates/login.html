@@ -1,0 +1,55 @@
+
+
+
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+{% load static %}
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+
+
+
+
+</head>
+<body>
+<div class="head" >cards</div>
+
+<center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+<div class="content" >
+{% if alert %}
+<div id="fail">{{alert}}</div>
+{% endif %}
+{% if not alert %}
+<div id="success">Login və şifrənizi daxil edin</div>
+{% endif %} 
+<form action='/login' method='POST'>
+{% csrf_token %}
+<input class="input" name="login" placeholder="login" >
+<br>
+<input class="input" name="sifre" placeholder="şifrə" >
+<br>
+
+<button class="button">sistemə giriş</button>
+<br>
+<button class="button"><a href='/register' >sistemə qeydiyyat</a><a href='/forgotpass' > | şifrəmi unutmuşam</a></button>
+<div style="margin-top:5px;text-align:justify" id="success" >
+<div id="fail" style="margin:-9px" >
+Sistem haqqında
+</div>
+<br>
+Ekart sistemi virtual kartlardan və virtual pullardan
+ibarət olan onlain ödəniş sistemidir. Ekartlar vasitəsilə siz partniyor saytlarda ödəniş edə, gündəlik gündəlik pul hesablaşmalarında pul göndərə və qəbul edə bilərsiniz. Ekart ilə 0.2 azn-dan başlayaraq ödənişlər həyata keçirilir. Sistemdə ekart və balans sistemləri fərqlidir. Balansınız vasitəsilə lazımı dəyərdə ekart ala bilərsiniz. 
+Ekartlar vasitəsilə balans artırdıqdan sonra hesabdan pul çıxara bilərsiniz. 
+Balans əməliyyatları barədə cari bölmədən məlümat toplaya bilərsiniz.
+</div>
+</div>
+<div class="foot" >virtual money 2000</div>
+</body>
+</html>

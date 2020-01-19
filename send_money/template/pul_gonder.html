@@ -1,0 +1,68 @@
+
+
+
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en"><head>
+{% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+
+
+</head>
+<body>
+
+<div style='text-align:left' class="head" >EKART.NET<span style='float:right'>
+<a href="/logout" >Hesabdan çıx</a>
+</span></div>
+<center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+
+
+
+
+
+
+
+<div class="content" >
+<div id="fail">
+<span style="font-size:17px" >
+Balansım: {{balans}} ₼
+</span>
+</div>
+<div style="text-align:left" id="success">
+GCK -- göndərilən cüzdanın kodu
+<br>
+GPM -- göndəriləcək pulun məbləği
+</div>
+{% if alert %}
+<div id="fail">{{alert}}</div>
+{%endif %}
+
+<form action="/transfer" method="POST">
+{% csrf_token %}
+<input type="number" class="input" name="GCK" placeholder="GCK kodu daxil edin" >
+<br>
+
+<input type="text" class="input" name="GPM" placeholder="GPM minimum 0.1 azn" >
+<br>
+
+<input type="text" disabled="disabled" class="input" name="sifre" value="cüzdan kodum {{CK}}" placeholder="mənim CK kodum" >
+<br>
+
+
+
+<button class="button">virtual pul göndər</button>
+</form>
+</div>
+<div class="foot" >virtual money 2000
+<span style="align:left" >
+</span>
+</div>
+</body>
+</html>

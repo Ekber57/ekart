@@ -1,0 +1,104 @@
+
+
+<!--{% load static %}-->
+<!DOCTYPE html><html class="i-ua_js_no i-ua_css_standard" lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<title></title>
+<link rel="stylesheet" href="{% static 'css/Ekber.css' %}">
+<link rel="stylesheet" href="../static/css/Ekber.css">
+
+
+
+</head>
+<body>
+<div style='text-align:left' class="head" >EKART.NET<span style='float:right'>
+<a href="/logout" >Hesabdan çıx</a>
+</span></div>
+<center>
+<img style="margin-top:8px" src="{% static 'png/logo.jpg' %}"  height="120" width="200"  >
+</center>
+<div class="content">
+{{data}}
+{{id}}
+
+<div id="success" style="text-align:left" >
+
+<div style="margin:-9px" id="fail">
+<span style="font-size:17px" >
+CK {{ckod}}
+{% if not status %}
+<br>
+hesabiniz testiq edilmeyib
+{% endif %}
+</div>
+<br>
+
+
+
+
+{{ad}} {{soyad}}
+<br>
+Balans : {{balans}} azn  
+<br>
+Kartlarımın sayı: {{kart_sayi}}
+<br>
+Kartlarımın ümumi cəmi : {{kart_mebleqi}} azn
+<br>
+Mənim ümumi balansım: {{umumi_balansim}} azn<br>
+
+</div>
+{% if status  %}
+<div style="text-align:left" id="success" >
+<div style="margin:-9px" id="fail" >
+Əməliyyatlar
+</div>
+<br>
+<a href="/buy_card" >Ekart al</a>
+<br>
+<a href="/send_card" >Ekart yüklə</a>
+<br>
+<a href="/send_money" >Virtual pul göndər</a>
+<br>
+
+<a href="/card_by" >Hesabdan pul çıxart</a>
+<br>
+<a href="/change_profile" >Hesab məlümatlarını dəyişdir</a>
+<br>
+
+</div>
+
+
+
+
+<div style='text-align:justify' id="success" >
+
+
+<div style="margin:-9px" id="fail">
+
+Hesabımdakı kartlar
+
+</div>
+<br>
+
+{% for kart in kartlar %}
+KS {{kart.KS}} {{kart.amount}} azn  KK {{kart.KK}}
+<br>
+{% endfor %}
+
+
+
+
+</div>
+{% endif %}
+</div>
+<div class="foot" >virtual money 2000
+<span style="align:left" >
+</span>
+</div>
+</body>
+</html>
